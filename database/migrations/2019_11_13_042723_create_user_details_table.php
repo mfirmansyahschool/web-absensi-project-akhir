@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrangtuasTable extends Migration
+class CreateUserDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateOrangtuasTable extends Migration
      */
     public function up()
     {
-        Schema::create('orangtuas', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nama');
+            $table->string('email')->nullable();
+            $table->string('no_telp')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateOrangtuasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orangtuas');
+        Schema::dropIfExists('user_details');
     }
 }
