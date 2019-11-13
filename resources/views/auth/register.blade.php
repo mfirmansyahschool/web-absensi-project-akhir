@@ -71,8 +71,8 @@
                                     <option value="1">Piket atau Kesiswaan</option>
                                     <option value="2">Guru</option>
                                     <option value="3">Pemb. Rayon</option>
-                                    <option value="4">Orangtua</option>
-                                    <option value="5">Kaprog atau Laboran</option>
+                                    <option value="4">Kaprog atau Laboran</option>
+                                    <option value="5">Orangtua</option>
                                 </select>
 
                                 @error('action')
