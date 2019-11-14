@@ -1,13 +1,25 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        body{
+            background-blend-mode: multiply;
+            background: #636b6f;
+            background-image: url('{{ asset("assets/img/landing-page.jpg") }}');
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center align">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                {{-- <div class="card-header">{{ __('Login') }}</div> --}}
 
-                <div class="card-body">
+                <div class="card-body py-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

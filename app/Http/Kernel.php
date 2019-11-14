@@ -41,6 +41,32 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'Guru' => [
+            'web', 
+            \App\Http\Middleware\Guru::class,
+        ],
+        
+        'PiketKurikulum' => [
+            'web', 
+            \App\Http\Middleware\PiketKurikulum::class,
+        ],
+
+        'PembRayon' => [
+            'web', 
+            \App\Http\Middleware\PembRayon::class,
+        ],
+
+        'KaprogLaboran' => [
+            'web', 
+            \App\Http\Middleware\KaprogLaboran::class,
+        ],
+
+        'Orangtua' => [
+            'web', 
+            \App\Http\Middleware\Orangtua::class,
+        ],
+
     ];
 
     /**

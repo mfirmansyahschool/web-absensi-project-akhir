@@ -15,7 +15,8 @@ class CreateJurusansTable extends Migration
     {
         Schema::create('jurusans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('jurusan')->unsigned();
+            $table->string('jurusan');
+            $table->string('singkatan');
             $table->unsignedBigInteger('kaprog_id')->unsigned();
             $table->timestamps();
         });

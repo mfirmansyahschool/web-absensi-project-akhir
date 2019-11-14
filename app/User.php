@@ -44,8 +44,21 @@ class User extends Authenticatable
 
     public function rayon()
     {
-        return $this->hasOne(Rayon::class);
+        return $this->hasMany(Rayon::class);
     }
 
-    
+    public function user_detail()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+
+    public function action()
+    {
+        return $this->belongsTo(Action::class);
+    }
+
+    public function orangtua()
+    {
+        return $this->hasOne(Orangtua::class);
+    }
 }

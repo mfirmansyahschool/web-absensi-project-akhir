@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserDetail;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -12,19 +15,21 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function identitas()
     {
-        return view('main.users.index', ['users' => User::all()]);
+        $user = Auth::user()->user_detail;
+        return view('account.identitas', compact('user'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function akun()
     {
         //
+        return view('account.akun', ['user' => User::find(Auth::user()->id)]);
     }
 
     /**
@@ -33,9 +38,20 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function akunUpdate(Request $request)
     {
-        //
+        $this->validate($request, [
+            'username' => 'required|string|max:255|unique:users,username,' . Auth::user()->id,
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->update([
+            'username' => $request->username,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->back()->with('message', 'Berhasil Mengupdate Akun!');
     }
 
     /**
@@ -44,9 +60,29 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function identitasUpdate(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'string',
+            'email' => 'email',
+            'no_telp' => ''
+        ]);
+
+        if (empty(Auth::user()->user_detail)) {
+            Auth::user()->user_detail()->create([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp
+            ]);
+        } else{
+            Auth::user()->user_detail()->update([
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp
+            ]);
+        }
+        
+        return redirect()->back()->with('message', 'Berhasil Mengubah Data!');
     }
 
     /**

@@ -17,6 +17,7 @@ class CreateRombelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('rombel');
             $table->string('jurusan_id');
+            $table->unsignedBigInteger('angkatan_id')->unsigned();
             $table->timestamps();
         });
     }
