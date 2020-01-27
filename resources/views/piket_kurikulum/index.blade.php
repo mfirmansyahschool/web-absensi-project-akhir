@@ -1,31 +1,33 @@
 @extends('layouts.main')
 
 @section('sidebar')
-    @include('layouts._sidebar._guru')
+    @include('layouts._sidebar._piketkurikulum')
 @endsection
 
 @section('content')
 <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon" style="background: linear-gradient(60deg, #f857f2, #ec09e4)">
-                            <i class="material-icons">{{ $datas[0]['student']['nama'] }}</i>
+            @foreach ($angkatans as $angkatan)
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-warning card-header-icon">
+                            <div class="card-icon" style="background: linear-gradient(60deg, #f857f2, #ec09e4)">
+                                <i class="material-icons">{{ $angkatan->angkatan }}</i>
+                            </div>
+                            <p class="card-category">Jumlah Siswa</p>
+                            <h3 class="card-title">{{ $angkatan->rombels->load('students')->count() }}
+                                <small>siswa</small>
+                            </h3>
                         </div>
-                        <p class="card-category">Jumlah Siswa</p>
-                        <h3 class="card-title">
-                            <small>siswa</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-dark">info_outline</i>
-                            <a href="#see-detail" data-toggle="modal">Lihat lebih lanjut...</a>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-dark">info_outline</i>
+                                <a href="#see-detail" data-toggle="modal">Lihat lebih lanjut...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-icon">

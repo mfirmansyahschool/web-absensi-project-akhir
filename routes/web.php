@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
+    if (Auth::user()) {
+        return redirect('/redirect');
+    }
     return view('welcome');
+});
+
+Route::get('/home', function(){
+    return redirect('/redirect');
 });
 
 Auth::routes(['register' => false]);
@@ -29,9 +36,20 @@ Route::middleware('auth')->prefix('account')->name('account.')->group(function()
 
 Route::get('/contoh', function(){
     return view('home');
-    
 });
 
 Route::middleware('Guru')->prefix('guru')->name('guru.')->group(function(){
     Route::get('', 'GuruController@index')->name('index');
+});
+
+Route::middleware('PiketKurikulum')->prefix('piket-kurikulum')->name('piketkurikulum.')->group(function(){
+    Route::get('', 'PiketKurikulumController@index')->name('index');
+    Route::get('absensi', 'PiketKurikulumController@absensi')->name('absensi');
+    Route::get('laporan', 'PiketKurikulumController@laporan')->name('laporan');
+    Route::get('daftar-guru', 'PiketKurikulumController@daftarGuru')->name('daftar-guru');
+    Route::get('daftar-siswa', 'PiketKurikulumController@daftarSiswa')->name('daftar-siswa');
+});
+
+Route::middleware('Orangtua')->prefix('orangtua')->name('orangtua.')->group(function(){
+    Route::get('', 'OrangtuaController@index')->name('index');
 });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrangtuasTable extends Migration
+class CreateRayonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateOrangtuasTable extends Migration
      */
     public function up()
     {
-        Schema::create('orangtuas', function (Blueprint $table) {
+        Schema::create('rayons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->string('rayon');
+            $table->unsignedBigInteger('pembimbing_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('pembimbing_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +30,6 @@ class CreateOrangtuasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orangtuas');
+        Schema::dropIfExists('rayons');
     }
 }

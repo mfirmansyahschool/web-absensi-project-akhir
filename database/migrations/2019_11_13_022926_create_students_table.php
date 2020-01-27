@@ -23,6 +23,10 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('rayon_id')->unsigned();
             $table->unsignedBigInteger('orangtua_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('rombel_id')->references('id')->on('rombels')->onDelete('cascade');
+            $table->foreign('rayon_id')->references('id')->on('rayons')->onDelete('cascade');
+            $table->foreign('orangtua_id')->references('id')->on('orangtuas')->onDelete('cascade');
         });
     }
 

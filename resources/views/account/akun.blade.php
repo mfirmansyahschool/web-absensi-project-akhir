@@ -5,6 +5,9 @@
     @if (Auth::user()->action_id == 2)
         @include('layouts._sidebar._guru')
     @endif
+    @if (Auth::user()->action_id == 1)
+        @include('layouts._sidebar._piketkurikulum')
+    @endif
 
 @endsection
 

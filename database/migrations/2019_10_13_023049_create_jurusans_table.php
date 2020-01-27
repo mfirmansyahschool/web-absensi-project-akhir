@@ -19,6 +19,8 @@ class CreateJurusansTable extends Migration
             $table->string('singkatan');
             $table->unsignedBigInteger('kaprog_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('kaprog_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

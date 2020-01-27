@@ -20,6 +20,9 @@ class CreateAbsensisTable extends Migration
             $table->dateTime('tanggal_absen');
             $table->string('keterangan');
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -68,7 +68,7 @@
                                 {{-- <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"> --}}
                                 <select name="action" id="action" class="custom-select">
                                     <option value="" selected disabled>Action</option>
-                                    <option value="1">Piket atau Kesiswaan</option>
+                                    <option value="1">Piket atau Kurikulum</option>
                                     <option value="2">Guru</option>
                                     <option value="3">Pemb. Rayon</option>
                                     <option value="4">Kaprog atau Laboran</option>

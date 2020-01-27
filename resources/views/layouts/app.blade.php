@@ -23,13 +23,20 @@
             font-family: 'Nunito', sans-serif !important;
             font-weight: 600px;
         }
+        body{
+            background-blend-mode: multiply;
+            background: #636b6f;
+            background-image: url('{{ asset("assets/img/landing-page.jpg") }}');
+            background-position: center;
+            background-size: cover;
+        }
     </style>
 
     @yield('style')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-transparent bg-transparent">
+        <nav class="navbar navbar-expand-md navbar-transparent bg-transparent fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     <b>ABSENSI</b> WIKRAMA
@@ -80,7 +87,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

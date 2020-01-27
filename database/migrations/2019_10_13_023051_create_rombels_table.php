@@ -16,9 +16,12 @@ class CreateRombelsTable extends Migration
         Schema::create('rombels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('rombel');
-            $table->string('jurusan_id');
+            $table->unsignedBigInteger('jurusan_id')->unsigned();
             $table->unsignedBigInteger('angkatan_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade');
+            $table->foreign('angkatan_id')->references('id')->on('angkatans')->onDelete('cascade');
         });
     }
 

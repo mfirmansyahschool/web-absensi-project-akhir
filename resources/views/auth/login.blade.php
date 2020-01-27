@@ -14,12 +14,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center align">
+    <div class="row justify-content-center align-items-center" style="height: 100vh">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card bg-transparent border-0">
                 {{-- <div class="card-header">{{ __('Login') }}</div> --}}
 
-                <div class="card-body py-5">
+                <div class="card-body bg-white py-5 px-0">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -58,7 +58,7 @@
                                 {{-- <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> --}}
                                 <select name="action_id" id="action" class="custom-select" required>
                                     <option value="" selected disabled>Action</option>
-                                    <option value="1">Piket atau Kesiswaan</option>
+                                    <option value="1">Piket atau Kurikulum</option>
                                     <option value="2">Guru</option>
                                     <option value="3">Pemb. Rayon</option>
                                     <option value="4">Kaprog atau Laboran</option>
